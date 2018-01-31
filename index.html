@@ -1,0 +1,44 @@
+//include elevatezoom.js
+
+<img id="zoom_03" src="http://www.elevateweb.co.uk/wp-content/themes/radial/zoom/images/small/image3.png" 
+data-zoom-image="http://www.elevateweb.co.uk/wp-content/themes/radial/zoom/images/large/image3.jpg"
+width="411"  />
+
+<div id="gallery_01">
+  <a  href="#" class="elevatezoom-gallery active" data-update="" data-image="images/large/image1.jpg" data-zoom-image="images/large/image1.jpg">
+  <img src="images/large/image1.jpg" width="100"  />
+  </a>
+  <a  href="#" class="elevatezoom-gallery" data-update="" data-image="images/large/image2.jpg" data-zoom-image="images/large/image2.jpg">
+  <img src="images/large/image2.jpg" width="100"  />
+  </a>
+  <a  href="#" class="elevatezoom-gallery" data-image="images/large/image3.jpg" data-zoom-image="images/large/image3.jpg">
+  <img src="images/large/image3.jpg" width="100"  />
+  </a>
+  <a  href="#" class="elevatezoom-gallery" data-update="" data-image="images/large/image1.jpg" data-zoom-image="images/large/image1.jpg">
+  <img src="images/large/image1.jpg" width="100"  />
+  </a>
+  <a  href="#" class="elevatezoom-gallery" data-update="" data-image="images/large/image5.jpg" data-zoom-image="images/large/image5.jpg">
+  <img src="images/large/image5.jpg" width="100"  />
+  </a>
+</div>
+
+
+
+<script>
+var zoomConfig = {cursor: 'crosshair', zoomType: "inner" }; 
+var image = $('#gallery_01 a');
+var zoomImage = $('img#zoom_03');
+
+zoomImage.elevateZoom(zoomConfig);//initialise zoom
+
+image.on('click', function(){
+    // Remove old instance od EZ
+    $('.zoomContainer').remove();
+    zoomImage.removeData('elevateZoom');
+    // Update source for images
+    zoomImage.attr('src', $(this).data('image'));
+    zoomImage.data('zoom-image', $(this).data('zoom-image'));
+    // Reinitialize EZ
+    zoomImage.elevateZoom(zoomConfig);
+});
+</script>
